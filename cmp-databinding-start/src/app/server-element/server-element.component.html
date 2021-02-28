@@ -1,11 +1,8 @@
 <div class="panel panel-default">
   <div class="panel-heading">{{ element.name }}</div>
   <div class="panel-body">
-    <p>
-      <strong *ngIf="element.type === 'server'" style="color: red">{{
-        element.content
-      }}</strong>
-      <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
-    </p>
+    <ng-content></ng-content> 
+    <!-- ng content is a hook. any content you add between the opening and closing tags of this comps selector is projected here -->
+    <!-- use case: reusable widgets like a tab widget where each tab has complex content (e.g. complex html code) which comes from another source -->
   </div>
 </div>
