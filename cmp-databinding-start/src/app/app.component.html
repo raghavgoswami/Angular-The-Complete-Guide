@@ -6,15 +6,34 @@
   <hr />
   <div class="row">
     <div class="col-xs-12">
-      <button (click)="onChangeFirst()" class="btn btn-primary">Change first element</button>
+      <button (click)="onChangeFirst()" class="btn btn-primary">Change First Element</button>
+      <button (click)="onDestroyFirst()" class="btn btn-danger">Destroy First Component</button>
       <app-server-element
         *ngFor="let serverElement of serverElements"
-        [srvElement]="serverElement"> 
-        <p>
+        [srvElement]="serverElement"
+        [name]="serverElement.name"
+        > 
+        <!-- the below content is projected from app component into the server element -->
+        <!-- can access this content in app component using view child in app component ts file -->
+        <!-- to access it in the serve element component where it's passed into, can't use viewchild in the ts file,-->
+        <!-- need to use contentchild since it's not part of the view but of the content -->
+        <p #contentParagraph>
           <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content}}</strong>
           <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
         </p>
       </app-server-element>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-game-control (intervalFired)="onIntervalFired($event)"></app-game-control>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-odd *ngFor="let oddNumber of oddsSoFar" [odd]="oddNumber"></app-odd>
+      <app-even *ngFor="let evenNumber of evensSoFar" [even]="evenNumber"></app-even>
     </div>
   </div>
 </div>

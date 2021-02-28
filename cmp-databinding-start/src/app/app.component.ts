@@ -10,6 +10,9 @@ export class AppComponent {
     { type: "server", name: "Testserver", content: "Just a test!" },
   ];
 
+  evensSoFar: number[] = []
+  oddsSoFar: number[] = []
+
   onServerAdded(serverData: { serverName: string; serverContent: string }) {
     //named like so since it's called after button is clicked, not at once
     this.serverElements.push({
@@ -29,5 +32,19 @@ export class AppComponent {
       content: blueprintData.serverContent,
     });
   }
-  onChangeFirst() {}
+  onChangeFirst() {
+    this.serverElements[0].name = "changed"
+  }
+
+  onDestroyFirst() {
+    this.serverElements.splice(0,1)
+
+  }
+
+  onIntervalFired(firedNumber: number){
+    if (firedNumber % 2 === 0){
+      this.evensSoFar.push(firedNumber)
+    } else { this.oddsSoFar.push(firedNumber)
+    }
+  }
 }

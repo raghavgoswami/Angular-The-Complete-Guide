@@ -1,5 +1,7 @@
 <div class="panel panel-default">
-  <div class="panel-heading">{{ element.name }}</div>
+  <!-- <div class="panel-heading">{{ element.name }}</div> -->
+  <div class="panel-heading" #heading>{{ name }}</div>
+
   <div class="panel-body">
     <ng-content></ng-content> 
     <!-- ng content is a hook. any content you add between the opening and closing tags of this comps selector is projected here -->
