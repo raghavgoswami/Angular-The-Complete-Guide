@@ -1,6 +1,4 @@
-import { Component } from "@angular/core";
-
-import { Component } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
 
 @Component({
   // decorator allows angular to recognize this as a component
@@ -8,4 +6,10 @@ import { Component } from "@angular/core";
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.css"],
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  @Output() featureSelected = new EventEmitter<string>();
+
+  onSelect(feature: string) {
+    this.featureSelected.emit(feature);
+  }
+}
