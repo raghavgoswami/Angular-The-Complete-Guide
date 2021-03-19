@@ -20,8 +20,8 @@ export class DropdownDirective {
   // close dropdown by clicking anywhere outside
   @HostListener("document:click", ["$event"]) toggleOpen(event: Event) {
     this.isOpen = this.elRef.nativeElement.contains(event.target)
-      ? this
-      : !this;
+      ? !!this // this is gross
+      : !this; // and this too
   }
 
   constructor(private elRef: ElementRef) {}
