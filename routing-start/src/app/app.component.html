@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="nav nav-tabs">
+        <li
+          role="presentation"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a routerLink="/">Home</a>
+        </li>
+        <li role="presentation" routerLinkActive="active">
+          <a routerLink="servers">Servers</a>
+        </li>
+        <li role="presentation" routerLinkActive="active">
+          <a [routerLink]="['users']">Users</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!-- below director selector is for a special directive that ships with angular -->
+      <!-- marks place in document where we want angular router to load comp of currently selected route -->
+      <!-- reserved for routes on the top level only, not child routes -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
