@@ -56,7 +56,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   // useHash - all parts of route after hash are ignored by web server
-  // part after can be parsed by angular
+  // part after can be parsed by angular - not preferred
   imports: [RouterModule.forRoot(appRoutes, { useHash: true })], // configure router module with routess, do not re-declare modules from app.modules.ts
   exports: [RouterModule], // if i were to import this module, what should be accessible to the module importing this module
 })
