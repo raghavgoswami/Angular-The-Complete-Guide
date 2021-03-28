@@ -17,8 +17,8 @@ export class RecipeEditComponent implements OnInit {
       this.id = +params["id"];
       this.editMode = params["id"] != null; // if params has id if in edit mode, otherwise in new mode
       console.log(this.editMode);
-      // note: in cases you create custom observables (not managed by angular), need to add onDestroy
-      // and unsubscribe
+      // note: in cases you create custom observables (not managed by angular, in which case angular does cleanup)
+      //  need to add onDestroy() and unsubscribe
     });
   }
 }
