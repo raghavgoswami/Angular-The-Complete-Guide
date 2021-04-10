@@ -1,12 +1,13 @@
-import { EventEmitter, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Recipe } from "./recipe.model";
 import { Ingredient } from "../shared/ingredient.model";
 import { ShoppingListService } from "../shopping-list/shopping-list.service";
+import { Subject } from "rxjs";
 
 @Injectable()
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>(); // public prop, can access from outside
-  // private prop,  can't access array from outside
+  // recipeSelected = new Subject<Recipe>(); // public prop, can access from outside
+  // private prop, can't access array from outside
   private recipes: Recipe[] = [
     new Recipe(
       "Tasty Schnitzel",
