@@ -10,7 +10,7 @@ import { ActivatedRoute, Params, Router } from "@angular/router";
 })
 export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
-  id: number;
+  id: number; // index
 
   constructor(
     private recipeService: RecipeService,
@@ -23,14 +23,18 @@ export class RecipeDetailComponent implements OnInit {
       this.id = +params["id"];
       this.recipe = this.recipeService.getRecipe(this.id);
       // note: in cases you create custom observables (not managed by angular, in which case angular does cleanup)
-      //  need to add onDestroy() and unsubscribe
+      // need to add onDestroy() and unsubscribe
     });
   }
 
   onAddToShoppingList() {
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
   }
-
+  onDeleteRecipe() {
+    this.recipeService.deleteRecipe(this.id);
+    // navigate away to main view
+    this.router.navigate(["/recipes"]);
+  }
   onEditRecipe() {
     // straightforward way
     this.router.navigate(["edit"], { relativeTo: this.route });

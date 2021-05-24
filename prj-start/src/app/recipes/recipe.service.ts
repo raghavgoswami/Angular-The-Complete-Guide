@@ -6,6 +6,8 @@ import { Subject } from "rxjs";
 
 @Injectable()
 export class RecipeService {
+  // same approach as shopping list service
+  recipesChanged = new Subject<Recipe[]>();
   // recipeSelected = new Subject<Recipe>(); // public prop, can access from outside
   // private prop, can't access array from outside
   private recipes: Recipe[] = [
@@ -37,5 +39,22 @@ export class RecipeService {
 
   getRecipe(index: number) {
     return this.recipes[index];
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    // same approach as shopping list service
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe) {
+    this.recipes[index] = newRecipe;
+    // same approach as shopping list service
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
+    this.recipesChanged.next(this.recipes.slice());
   }
 }
